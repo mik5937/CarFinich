@@ -6,35 +6,36 @@ import java.awt.event.KeyEvent;
 public class Player {
     public int score =0;
     public int h =103;
-    public int w = 66;
+    public int w = 63;
     private int x = 0;
     private int y = 0;
-    private int speed = 5;
+    private int speed = 6;
     private int mapX = 250;
     private int mapY = 250;
     enum Direction { UP, DOWN, LEFT, RIGHT, NONE }
-    Image pl = new ImageIcon("Image/2.jpg").getImage();
+    Image pl = new ImageIcon("Image/2.png").getImage();
 
     private Direction playerDirection = Direction.NONE;
 
     public void move() {
         switch(playerDirection) {
             case UP:
-                if (getMapY() ==15){playerDirection = Direction.NONE;}
+                if (getMapY() <15){playerDirection = Direction.NONE;}
               //  System.out.println(getMapY());
                 mapY-=speed;
+               // playerDirection = Direction.NONE;
                 break;
             case DOWN:
-                if (getMapY() ==470){playerDirection = Direction.NONE;}
+                if (getMapY() >470){playerDirection = Direction.NONE;}
                 mapY+=speed;
                 break;
             case LEFT:
-                if (getMapX() ==15){playerDirection = Direction.NONE;}
+                if (getMapX() <15){playerDirection = Direction.NONE;}
                 //System.out.println(getMapX());
                 mapX-=speed;
                 break;
             case RIGHT:
-                if (getMapX() ==560){playerDirection = Direction.NONE;}
+                if (getMapX() >560){playerDirection = Direction.NONE;}
                 mapX+=speed;
                 break;
             default:
@@ -58,14 +59,14 @@ public class Player {
         }
     }
     public void ScorePlus() {
-         System.out.println("S4et");
+        // System.out.println("S4et");
          System.out.println(score);
          score+=1;
         return;
     }
 
     public void keyReleased(KeyEvent e) {
-        System.out.println(e.getKeyCode());
+
     }
 
     public int getX() {
